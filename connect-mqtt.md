@@ -35,11 +35,10 @@ client.loop_forever()
 python3 gps_subcriber.py
 ```
 
-# Trên LAPTOP
-- Cài đặt paho-mqtt
+# Trên LAPTOP/JETSON NANO
+- Cài đặt Mosquitto
 ```
 sudo apt install mosquitto-clients -y
-pip install paho-mqtt
 ```
 - Tệp gps_publisher.py
 ```
