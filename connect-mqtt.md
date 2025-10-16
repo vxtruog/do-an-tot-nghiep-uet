@@ -12,6 +12,15 @@ sudo apt install mosquitto mosquitto-clients -y
 sudo systemctl enable mosquitto
 sudo systemctl start mosquitto
 ```
+- Cho phép truy cập MQTT từ nhiều thiết bị trong mạng LAN
+```
+sudo nano /etc/mosquitto/mosquitto.conf
+>> thêm dòng
+listener 1883 0.0.0.0
+allow_anonymous true
+>> lưu lại
+sudo systemctl restart mosquitto
+```
 - Tệp gps_subcriber.py
 ```
 import paho.mqtt.client as mqtt
