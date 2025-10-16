@@ -5,7 +5,7 @@ sudo apt upgrade -y
 python3 -m pip install --upgrade pip
 pip install --upgrade paho-mqtt
 ```
-# Trên RASPBERRY PI
+# Trên RASPBERRY PI - Broker
 - Cài đặt Mosquitto
 ```
 sudo apt install mosquitto mosquitto-clients -y
@@ -29,6 +29,10 @@ client.on_message = on_message
 client.connect(BROKER, 1883, 60)
 client.subscribe(TOPIC)
 client.loop_forever()
+```
+- Chạy thử
+```
+python3 gps_subcriber.py
 ```
 
 # Trên LAPTOP
