@@ -1,0 +1,53 @@
+@import "themes.css";
+@import "menu.css";
+@import "quanlydangnhap.css";
+@import "manhinhchinh.css";
+@import "vitricuarobot.css";
+
+body {
+  font-family: "Consolas", sans-serif;
+  margin: 0;
+  /* background pattern */
+  background-color: var(--foreground-color);
+  background-size: 7px 7px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    hsla(var(--p-500-code), 0.1) 0,
+    hsla(var(--p-700-code), 0.1) 0.7000000000000001px,
+    var(--foreground-color) 0,
+    var(--foreground-color) 50%
+  );
+}
+
+.tab-content {
+  display: none; /* Ẩn mặc định tất cả tab lúc ban đầu*/
+  margin: 20px;
+}
+
+.toast {
+  position: fixed;
+  bottom: -50px; /* bắt đầu ở dưới màn hình */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--p-800);
+  color: var(--p-20);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 1000;
+  opacity: 0;
+  transition: bottom 0.8s ease, opacity 0.5s ease;
+}
+
+/* Khi hiển thị */
+.toast.show {
+  bottom: 20px;
+  opacity: 1;
+}
+
+/* Khi ẩn */
+.toast.hide {
+  bottom: -50px;
+  opacity: 0;
+}
