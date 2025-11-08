@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robot chăm sóc cây trồng</title>
+  <link rel="icon" href="../static/assets/server.ico" />
+  <link rel="stylesheet" href="../static/css/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <!-- Menu -->
+  <div class="tab-menu">
+    <button class="active" onclick="openTab('manhinhchinh', this)">
+      Màn hình chính
+    </button>
+    <button onclick="openTab('manhinhchitiet', this)">
+      Màn hình chi tiết
+    </button>
+    <button onclick="openTab('cauhinhhethong', this)">
+      Cấu hình hệ thống
+    </button>
+    <button onclick="openTab('vitricuarobot', this)">
+      Vị trí của robot
+    </button>
+    <button onclick="openTab('xuhuongdulieu', this)">Lịch sử dữ liệu</button>
+    <button onclick="openTab('quanlydangnhap', this)">
+      Quản lý đăng nhập
+    </button>
+  </div>
+
+  <!-- Nội dung -->
+  <div id="manhinhchinh" class="tab-content" style="display: block">
+    <div class="frame-page">
+      <div class="container-manhinhchinh">
+        <div class="header">
+          <div class="school">
+            <img src="/static/assets/logo_uet.ico" alt="Logo trường" />
+            <div>
+              <h1>TRƯỜNG ĐẠI HỌC CÔNG NGHỆ - ĐHQGHN</h1>
+              <p>Khoa Cơ học kỹ thuật và Tự động hóa</p>
+            </div>
+          </div>
+          <div class="datetime">
+            <div class="time-row">
+              <div class="time"></div>
+              <img class="flag" src="/static/assets/vietnam.ico" alt="Viet Nam Flag" />
+            </div>
+            <div class="date"></div>
+            <hr class="divider" />
+            <div class="username">Người dùng: {{ username }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="manhinhchitiet" class="tab-content">
+  </div>
+
+  <div id="cauhinhhethong" class="tab-content">
+    <h2>Cấu hình hệ thống</h2>
+    <p>Nội dung của cấu hình hệ thống...</p>
+  </div>
+
+  <div id="vitricuarobot" class="tab-content">
+    <div class="frame-vitricuarobot">
+      <div class="container-vitricuarobot">
+        <div class="left-panel">
+          <div class="panel-box" id="speed-panel">
+            <h3>Trạng thái GPS</h3>
+            <div class="value">Thời điểm: <span id="time">--:--:--</span></div>
+            <div class="value">Kết nối: <span id="connect">Đang chờ</span></div>
+          </div>
+          <div class="panel-box" id="gps-panel">
+            <h3>Vị trí GPS hiện tại</h3>
+            <div class="value">Vĩ độ: <span id="gps-lat">--</span></div>
+            <div class="value">Kinh độ: <span id="gps-lng">--</span></div>
+          </div>
+          <div class="panel-box" id="path-panel">
+            <h3>Hình dạng đường đi</h3>
+            <canvas id="path-canvas" width="300" height="200"></canvas>
+            <button onclick="clearHistory()">Xoá đường đi</button>
+          </div>
+        </div>
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="xuhuongdulieu" class="tab-content">
+    <h2>Xu hướng dữ liệu</h2>
+    <p>Nội dung của xu hướng dữ liệu...</p>
+  </div>
+
+  <div id="quanlydangnhap" class="tab-content">
+    {% if role == "Roles.admin" %}
+    <button class="button-users" onclick="window.location.href='/users/signup'">
+      Đăng ký người dùng
+    </button>
+    {% endif %}
+    <button class="button-users" onclick="window.location.href='/users/logout'">
+      Đăng xuất
+    </button>
+    <h1 class="title-users">Bảng danh sách thành viên</h1>
+    <table class="table-container">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Tên người dùng</th>
+          <th>Chức vụ</th>
+          <th>Tên đăng nhập</th>
+          <th>Ngày tạo</th>
+          <th>Loại tài khoản</th>
+          {% if role == "Roles.admin" %}
+          <th>Chức năng</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr id="user-{{ user.id }}">
+          <td>{{ user.id }}</td>
+          <td>{{ user.fullname }}</td>
+          <td>{{ user.position }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.created_at }}</td>
+          <td>{{ user.role.value }}</td>
+          {% if role == "Roles.admin" %}
+          <td>
+            {% if user.role.value != "admin" %}
+            <button class="delete-user" onclick="openDeletePopup({{ user.id }})">
+              Xóa
+            </button>
+            {% else %}
+            <button class="admin" disabled>admin</button>
+            {% endif %}
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="popup" id="popup">
+      <div class="overlay" onclick="closeDeletePopup()"></div>
+      <div class="popup-content">
+        <h2>XÁC NHẬN XOÁ</h2>
+        <p>Bạn có chắc chắn xoá người dùng này không?</p>
+        <div class="control">
+          <button class="close-btn" onclick="closeDeletePopup()">Huỷ</button>
+          <button id="confirm-delete" class="submit-btn">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="../static/js/script.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCGdGRc_p3C9QdzyFy1VpQkJ8SDaFG4Zo"></script>
+</body>
+
+</html>

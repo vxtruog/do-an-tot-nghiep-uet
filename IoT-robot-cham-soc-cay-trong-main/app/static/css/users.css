@@ -1,0 +1,109 @@
+@import "themes.css";
+
+/* Căn giữa form login cả ngang và dọc */
+body {
+  font-family: "Consolas", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--foreground-color);
+  background-size: 7px 7px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    hsla(var(--p-500-code), 0.1) 0,
+    hsla(var(--p-700-code), 0.1) 0.7px,
+    var(--foreground-color) 0,
+    var(--foreground-color) 50%
+  );
+}
+
+/* Container của form */
+.container {
+  width: 90%;
+  max-width: 400px;
+  background-color: var(--p-20);
+  color: var(--p-600);
+  border: 2px solid var(--p-900);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+  color: var(--p-800);
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Nếu xảy ra lỗi như tên đăng nhập sai hoặc đăng ký tên đăng nhập đã có */
+.container .error-message {
+  background-color: #ffe6e6;
+  color: #cc0000;
+  border: 1px solid #cc0000;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.container form .form {
+  display: flex;
+  justify-content: flex-start;
+  color: var(--p-800);
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.container form input[type="text"],
+.container form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Bổ sung thêm cho đăng đăng ký tài khoản phần Chọn chức vụ*/
+.container form select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  appearance: none; /* ẩn mũi tên mặc định (tùy chọn) */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  height: 44px; /* đặt chiều cao cố định */
+  line-height: 1.2;
+  background-color: white; /* hoặc màu nền phù hợp */
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="7"><path fill="none" stroke="%23999" stroke-width="2" d="M1 1l5 5 5-5"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 7px;
+}
+
+/* Nút đăng nhập/đăng ký */
+.container form button {
+  width: 100%;
+  padding: 12px;
+  background: var(--p-800);
+  color: var(--p-20);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.container form button:hover {
+  background: var(--p-600);
+}

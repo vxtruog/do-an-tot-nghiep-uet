@@ -1,0 +1,105 @@
+@import "themes.css";
+
+#manhinhchinh .frame-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86vh;
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh {
+  margin-top: 30px;
+  width: 90%;
+  background: white;
+  border-radius: 15px;
+  border: 2px var(--p-800) solid;
+  padding: 10px 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 85vh; /* luôn gói gọn trong màn hình */
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#manhinhchinh .frame-page .container-manhinhchinh .header .school {
+  display: flex;
+  align-items: center;
+}
+#manhinhchinh .frame-page .container-manhinhchinh .header .school img {
+  height: 60px;
+  margin-right: 5px;
+}
+#manhinhchinh .frame-page .container-manhinhchinh .header .school h1 {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--p-800);
+}
+#manhinhchinh .frame-page .container-manhinhchinh .header .school p {
+  margin: 8px;
+  font-size: 16px;
+  font-weight: 500px;
+  color: var(--p-800);
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh .header .datetime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh .header .datetime .time-row {
+  display: inline-flex; /* giữ tất cả trên một dòng */
+  align-items: center;
+  gap: 20px; /* khoảng cách nhỏ giữa đồng hồ và cờ */
+}
+
+#manhinhchinh
+  .frame-page
+  .container-manhinhchinh
+  .header
+  .datetime
+  .time-row
+  .time {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  color: var(--p-800);
+}
+
+#manhinhchinh
+  .frame-page
+  .container-manhinhchinh
+  .header
+  .datetime
+  .time-row
+  .flag {
+  width: 24px;
+  height: 16px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh .header .datetime .date {
+  font-size: 14px;
+  color: #333;
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh .header .datetime .divider {
+  border: none;
+  height: 1px; /* độ dày */
+  background-color: #333; /* màu đậm, dễ nhìn */
+  width: 100%; /* kéo ngang hết */
+}
+
+#manhinhchinh .frame-page .container-manhinhchinh .header .datetime .username {
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+}

@@ -1,0 +1,166 @@
+@import "themes.css";
+
+#quanlydangnhap .button-users {
+  display: inline-block;
+  padding: 12px;
+  background: var(--p-800);
+  color: var(--p-20);
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+#quanlydangnhap .button-users:hover {
+  background: var(--p-600);
+}
+
+#quanlydangnhap .title-users {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--p-800);
+}
+
+#quanlydangnhap table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#quanlydangnhap tbody {
+  background: #fff;
+}
+
+#quanlydangnhap th,
+#quanlydangnhap td {
+  border: 2px solid var(--p-200);
+  padding: 8px;
+  text-align: center;
+}
+
+#quanlydangnhap th {
+  background-color: var(--p-800);
+  color: var(--p-20);
+  font-weight: bold;
+}
+
+#quanlydangnhap td .admin {
+  background-color: var(--p-800);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#quanlydangnhap td .delete-user {
+  background-color: darkred;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#quanlydangnhap td .delete-user:hover {
+  background-color: red;
+}
+
+#quanlydangnhap .popup {
+  position: fixed;
+  top: -100vh;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transition: top 0ms ease-in-out 300ms;
+}
+
+#quanlydangnhap .popup .overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 100ms ease-in-out 200ms;
+}
+
+#quanlydangnhap .popup .popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.15);
+  width: 95%;
+  max-width: 350px;
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  opacity: 0;
+  box-shadow: 0px 2px 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 300ms ease-in-out;
+}
+
+#quanlydangnhap .popup .popup-content h2 {
+  margin: 10px 0px;
+  font-size: 25px;
+  color: var(--p-800);
+  text-align: center;
+  font-weight: bold;
+}
+
+#quanlydangnhap .popup .popup-content p {
+  margin: 15px 0px;
+  color: var(--p-800);
+  font-size: 16px;
+  text-align: center;
+}
+
+#quanlydangnhap .popup .popup-content .control {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px 0px;
+}
+
+#quanlydangnhap .popup .popup-content .control button {
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#quanlydangnhap .popup .popup-content .control .close-btn {
+  background: transparent;
+  color: var(--p-800);
+  border-color: var(--p-800);
+}
+
+#quanlydangnhap .popup .popup-content .control .submit-btn {
+  background-color: darkred;
+  color: var(--p-20);
+}
+
+#quanlydangnhap .popup .popup-content .control .submit-btn:hover {
+  background-color: red;
+}
+
+#quanlydangnhap .popup.active {
+  top: 0px;
+  transition: top 0ms ease-in-out 0ms;
+}
+
+#quanlydangnhap .popup.active .overlay {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+}
+
+#quanlydangnhap .popup.active .popup-content {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
